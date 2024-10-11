@@ -65,17 +65,10 @@ const images = [
 ];
 
 const container = document.querySelector(".gallery");
+
 container.insertAdjacentHTML("beforeend", createGallery(images));
 
 container.addEventListener("click", handleClick);
-
-const linkDontUp = document.querySelectorAll(".gallery-link");
-
-linkDontUp.forEach(links => {
-  links.addEventListener("click", function (event) {
-    event.preventDefault();
-  });
-});
 
 function createGallery(arr) {
   return arr
@@ -95,6 +88,7 @@ function createGallery(arr) {
 }
 
 function handleClick(event) {
+  event.preventDefault();
   if (event.target.nodeName === "IMG") {
     const originalImg = event.target.dataset.source;
     const description = event.target.alt;
